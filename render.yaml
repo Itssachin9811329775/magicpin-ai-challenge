@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: vera-context-engine
+    runtime: python
+    plan: free
+    buildCommand: "python -m py_compile bot.py"
+    startCommand: "python bot.py"
+    healthCheckPath: /v1/healthz
+    envVars:
+      - key: STATE_DB
+        value: /tmp/magicpin-vera.sqlite3
